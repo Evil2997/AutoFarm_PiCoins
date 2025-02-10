@@ -28,33 +28,6 @@ class PiFarm:
         }
         self.window_numbers = len(self.WIN_START)
 
-    def activate_window(self, win, win_numeric):
-        skip_option = ["skip_option"]
-        connect_to_vpn_AND_open_telegram = [
-            "collapse_all_windows", "check_all_windows",
-            "clear_all", "ProtonVPN", "ActivateVPN",
-            "collapse_all_windows", "Telegram"
-        ]
-        Telegram = ["Telegram"]
-        main_group = ["main_group_1", "main_group_2"]
-
-        i = win_numeric
-        for _ in range(16):
-            win.activate()
-            win.move(0, 0)
-            self.delay(0.01, 0.04)
-        pg.click(self.WIN_START[f"win{i}"]["cords"])
-        self.delay(30, 40)
-        self.activate_main_window()
-        self.hunt_for_the_button_in_list(skip_option, hunt_in_seconds=2, threshold=0.88)
-        self.cycle_hunter_click(connect_to_vpn_AND_open_telegram)
-        self.delay()
-        self.hunt_for_the_button_in_list(skip_option, hunt_in_seconds=2, threshold=0.88)
-        self.find_it_and_click_it(Telegram, threshold=0.88)
-        self.delay(20, 30)
-        self.hunt_for_the_button_in_list(main_group, hunt_in_seconds=4)
-        self.delay(14, 16)
-
     def start_farming(self, window_numbers, settings_file):
         while True:
             ACTIVATE = False
@@ -159,20 +132,6 @@ class PiFarm:
         print(
             f"Время работы процесса: {int(days)} {day_form}, {int(hours)} {hour_form}, {int(minutes)} {minute_form}, {int(seconds)} {second_form}")
 
-
-    def activate_main_window(self, ):
-        full_screen = ["full_screen"]
-
-        for win in ahk.list_windows():
-            if (
-                    win.title.startswith("BlueStacks") and
-                    not win.title.startswith("BlueStacks Multi Instance Manager") and
-                    not win.title.startswith("BlueStacks-MultiTasks")
-            ):
-                win.activate()
-                self.hunt_for_the_button_in_list(full_screen, hunt_in_seconds=30)
-                break
-        self.delay()
 
 
     def hunt_for_the_button_in_list(self, name_list: list[str], hunt_in_seconds=10, region=(0, 0, 1920, 1080), threshold=0.92):
