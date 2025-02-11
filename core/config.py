@@ -1,6 +1,6 @@
 import json
 import pathlib
-from modules.logger import logger
+from core.logger import logger
 
 def load_data(file_path: pathlib.Path) -> dict:
     try:

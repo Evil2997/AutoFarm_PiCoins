@@ -1,9 +1,7 @@
-# window_manager.py
-
 import pyautogui as pg
 from ahk import AHK
 
-from modules.constants import (
+from core.constants import (
     close_all_BS_window,
     MANAGER_ACTIVATION_ATTEMPTS,
     MANAGER_ACTIVATION_DELAY_SHORT,
@@ -14,8 +12,8 @@ from modules.constants import (
     DEFAULT_DELAY_MAX,
     full_screen,
 )
-from modules.image_finder import delay, unified_hunt_click
-from modules.logger import logger
+from utils.image import delay, unified_hunt_click
+from core.logger import logger
 
 ahk = AHK()
 

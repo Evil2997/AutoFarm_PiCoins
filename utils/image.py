@@ -1,6 +1,3 @@
-# image_finder.py
-
-import random
 import time
 
 import cv2
@@ -8,7 +5,7 @@ import numpy as np
 import pyautogui as pg
 from PIL import ImageGrab
 
-from constants import (
+from core.constants import (
     DEFAULT_REGION,
     DEFAULT_THRESHOLD,
     DEFAULT_IMAGES_DIR,
@@ -18,15 +15,14 @@ from constants import (
     DEFAULT_DELAY_AFTER_CLICK,
     DEFAULT_CYCLE_CHECK_DELAY,
 )
-from modules.logger import logger
-from modules.models.click_modes import ModeEnum
+from core.logger import logger
+from utils.delay import delay
+from utils.models.click_modes import ModeEnum
 
 
-def delay(min_seconds: float, max_seconds: float):
-    time.sleep(random.uniform(min_seconds, max_seconds))
-
-
-def get_image_size(image_path: str) -> tuple[int, int]:
+def get_image_size(
+        image_path: str
+) -> tuple[int, int]:
     image = cv2.imread(image_path)
     if image is None:
         logger.error(f"Image not found: {image_path}")
@@ -35,8 +31,12 @@ def get_image_size(image_path: str) -> tuple[int, int]:
     return width, height
 
 
-def find_template_in_region(name: str, region: tuple[int, int, int, int], threshold: float, images_dir: str) -> tuple[
-                                                                                                                    int, int] | None:
+def find_template_in_region(
+        name: str,
+        region: tuple[int, int, int, int],
+        threshold: float,
+        images_dir: str
+) -> tuple[int, int] | None:
     template_path = f"{images_dir}/{name}.png"
     (x1, y1, x2, y2) = region
     screenshot = np.array(ImageGrab.grab(bbox=(x1, y1, x2, y2)))

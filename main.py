@@ -3,9 +3,9 @@ import time
 import random
 from typing import Final
 
-from modules.config_manager import load_data
-from modules.tesseract import setup_tesseract
-from modules.pi_farm import PiFarm
+from core.config import load_data
+from managers.tesseract import setup_tesseract
+from core.app import PiFarm
 
 if __name__ == '__main__':
     setup_tesseract()
@@ -13,7 +13,7 @@ if __name__ == '__main__':
     MAIN_DIR: Final[pathlib.Path] = pathlib.Path(__file__).parent
     settings_file = "Settings.json"
     path_to_Settings: Final[pathlib.Path] = MAIN_DIR / settings_file
-    _ = load_data(path_to_Settings)  # Если настройки нужны для внутренней логики PiFarm
+    _ = load_data(path_to_Settings)
 
     SS = random.randint(30, 40)
 

@@ -5,11 +5,11 @@ from typing import Final
 
 import pyautogui as pg
 
-from modules.config_manager import load_data, save_data
-from modules.window_manager import find_manager_window, stop_bs_windows, activate_main_window
-from modules.image_finder import delay, unified_hunt_click
-from modules.logger import logger
-from modules.constants import (
+from core.config import load_data, save_data
+from managers.window import find_manager_window, stop_bs_windows, activate_main_window
+from utils.image import delay, unified_hunt_click
+from core.logger import logger
+from core.constants import (
     ACTIVATION_ITERATIONS,
     ACTIVATION_MOVE_DELAY_MIN,
     ACTIVATION_MOVE_DELAY_MAX,
@@ -26,7 +26,7 @@ from modules.constants import (
     DEFAULT_DELAY_MAX,
     WIN_START,
 )
-from modules.time_utils import format_elapsed_time
+from utils.time_formatter import format_elapsed_time
 
 class PiFarm:
     def __init__(self, settings_file: str = "Settings.json"):
