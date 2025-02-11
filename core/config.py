@@ -1,6 +1,8 @@
 import json
 import pathlib
+
 from core.logger import logger
+
 
 def load_data(file_path: pathlib.Path) -> dict:
     try:
@@ -12,6 +14,7 @@ def load_data(file_path: pathlib.Path) -> dict:
     except json.JSONDecodeError as e:
         logger.error(f"Ошибка разбора JSON в {file_path}: {e}")
         return {}
+
 
 def save_data(file_path: pathlib.Path, data: dict) -> None:
     try:

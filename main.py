@@ -1,11 +1,12 @@
 import pathlib
-import time
 import random
+import time
 from typing import Final
 
-from core.config import load_data
-from managers.tesseract import setup_tesseract
 from core.app import PiFarm
+from core.config import load_data
+from core.logger import logger
+from managers.tesseract import setup_tesseract
 
 if __name__ == '__main__':
     setup_tesseract()
@@ -28,6 +29,6 @@ if __name__ == '__main__':
         pi_farm.start_farming(Game_Settings)
     except KeyboardInterrupt:
         pass
-    print(f"Время окончания сеанса: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}")
+    logger.info(f"Время окончания сеанса: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}")
     time_end = time.time()
     pi_farm.print_time_end(time_end, time_start)

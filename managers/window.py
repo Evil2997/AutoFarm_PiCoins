@@ -12,8 +12,8 @@ from core.constants import (
     DEFAULT_DELAY_MAX,
     full_screen,
 )
-from utils.image import delay, unified_hunt_click
 from core.logger import logger
+from utils.image import delay, unified_hunt_click
 
 ahk = AHK()
 

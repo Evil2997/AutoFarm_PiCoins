@@ -1,7 +1,7 @@
-import pytesseract.pytesseract
 import json
 import os
 
+import pytesseract.pytesseract
 
 
 def setup_tesseract(search_paths=['C:\\'], config_file_name='tesseract_config.json'):
@@ -41,6 +41,7 @@ def setup_tesseract(search_paths=['C:\\'], config_file_name='tesseract_config.js
             continue
 
     raise TesseractFileNotFoundError
+
 
 class TesseractFileNotFoundError(FileNotFoundError):
     pass
