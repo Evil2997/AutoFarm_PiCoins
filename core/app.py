@@ -24,7 +24,7 @@ from utils.constants import (
     WIN_START,
 )
 from utils.logger import logger
-from managers.window import find_manager_window, stop_bs_windows, activate_main_window
+from managers.window import find_manager_window, stop_bs_windows, activate_this_bs_window
 from utils.unified_hunt_click import delay, unified_hunt_click
 from utils.time_formatter import format_elapsed_time
 
@@ -42,7 +42,6 @@ class PiFarm:
             delay(ACTIVATION_MOVE_DELAY_MIN, ACTIVATION_MOVE_DELAY_MAX)
         pg.click(WIN_START[f"win{win_numeric}"]["cords"])
         delay(WAIT_AFTER_CLICK_MIN, WAIT_AFTER_CLICK_MAX)
-        activate_main_window()
         unified_hunt_click([skip_option], mode="hunt", timeout=2, threshold=0.88)
         unified_hunt_click([connect_to_vpn_AND_open_telegram], mode="cycle")
         delay(DEFAULT_DELAY_MIN, DEFAULT_DELAY_MAX)

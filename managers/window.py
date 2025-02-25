@@ -53,18 +53,17 @@ def stop_bs_windows():
     logger.info("Окна BS закрыты.")
 
 
-def activate_main_window():
-    main_found = False
+def activate_this_bs_window(BS_WINDOW_NUMERIC: int):
+    BS_WINDOW_FOUND = False
+    BS_WINDOW_NAME = f"BlueStacks {BS_WINDOW_NUMERIC}"
     for win in ahk.list_windows():
-        if (win.title.startswith("BlueStacks")
-                and not win.title.startswith("BlueStacks Multi Instance Manager")
-                and not win.title.startswith("BlueStacks-MultiTasks")):
+        if win.title.startswith(BS_WINDOW_NAME):
             win.activate()
             unified_hunt_click(full_screen, mode="hunt", timeout=30)
-            main_found = True
+            BS_WINDOW_FOUND = True
             logger.info("Основное окно BlueStacks активировано.")
             break
-    if not main_found:
+    if not BS_WINDOW_FOUND:
         logger.error("Основное окно BlueStacks не найдено в activate_main_window.")
         raise Exception("Основное окно BlueStacks не найдено")
     delay(DEFAULT_DELAY_MIN, DEFAULT_DELAY_MAX)
