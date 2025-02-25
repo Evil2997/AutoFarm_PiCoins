@@ -5,17 +5,13 @@ import numpy as np
 import pyautogui as pg
 from PIL import ImageGrab
 
-from core.constants import (
+from constants import (
     DEFAULT_REGION,
     DEFAULT_THRESHOLD,
-    DEFAULT_IMAGES_DIR,
-    DEFAULT_HUNT_TIMEOUT,
-    DEFAULT_DELAY_BEFORE_CLICK,
-    DEFAULT_DELAY_BETWEEN_CHECKS,
-    DEFAULT_DELAY_AFTER_CLICK,
-    DEFAULT_CYCLE_CHECK_DELAY,
+    DEFAULT_IMAGES_DIR, DEFAULT_DELAY_BEFORE_CLICK, DEFAULT_DELAY_BETWEEN_CHECKS, DEFAULT_DELAY_AFTER_CLICK,
+    DEFAULT_HUNT_TIMEOUT, DEFAULT_CYCLE_CHECK_DELAY,
 )
-from core.logger import logger
+from logger import logger
 from utils.delay import delay
 from utils.models.click_modes import ModeEnum
 

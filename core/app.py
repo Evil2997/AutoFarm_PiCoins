@@ -6,7 +6,7 @@ from typing import Final
 import pyautogui as pg
 
 from core.config import load_data, save_data
-from core.constants import (
+from utils.constants import (
     ACTIVATION_ITERATIONS,
     ACTIVATION_MOVE_DELAY_MIN,
     ACTIVATION_MOVE_DELAY_MAX,
@@ -23,9 +23,9 @@ from core.constants import (
     DEFAULT_DELAY_MAX,
     WIN_START,
 )
-from core.logger import logger
+from utils.logger import logger
 from managers.window import find_manager_window, stop_bs_windows, activate_main_window
-from utils.image import delay, unified_hunt_click
+from utils.unified_hunt_click import delay, unified_hunt_click
 from utils.time_formatter import format_elapsed_time
 
 
