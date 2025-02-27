@@ -1,17 +1,11 @@
 import pathlib
-
-full_screen = ["full_screen"]
-
-close_all_BS_window = [(350, 590), (500, 360)]
+from typing import Final
 
 DEFAULT_REGION = (0, 0, 1920, 1080)
 DEFAULT_THRESHOLD = 0.92
-DEFAULT_IMAGES_DIR = "Images"
 DEFAULT_HUNT_TIMEOUT = 10.0
-DEFAULT_DELAY_BEFORE_CLICK = (0.2, 0.3)
-DEFAULT_DELAY_BETWEEN_CHECKS = (0.01, 0.1)
-DEFAULT_DELAY_AFTER_CLICK = (0.8, 1.2)
-DEFAULT_CYCLE_CHECK_DELAY = (0.04, 0.2)
+
+CYCLE_INTERVAL = 24 * 60 * 60  # 24 часа
 
 MANAGER_ACTIVATION_ATTEMPTS = 8
 
@@ -49,8 +43,14 @@ WIN_START = {
 
 ALL_BS_WINDOWS = len(WIN_START)
 
-PROTON_VPN = ["protonvpn_open", "protonvpn_enable", "protonvpn_close"]
+MAIN_PROJECT_DIR: Final[pathlib.Path] = pathlib.Path(__file__).parents[1]
 
-APP_OPEN_ICON = "app_open"
+IMAGE_PATHS: pathlib.Path = MAIN_PROJECT_DIR / pathlib.Path("Images")
+
+full_screen = ["full_screen"]
+
+PROTON_VPN = ["proton_vpn_open", "continue_without_registration", "vpn_plus__not_now", "proton_vpn_enable", "collapse_all_windows"]
+APP_OPEN_ICON = ["app_open", "button_open_farming", "button_start_farming"]
+BUTTON_CLOSE_BS_WINDOW = ["button_close_bs_window", "button_close_bs_window__yes"]
 
 SETTINGS_FILE = pathlib.Path("Settings.json")

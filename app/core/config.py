@@ -1,7 +1,7 @@
 import json
 import pathlib
 
-from utils.logger import logger
+from app.logs.logger import logger
 
 
 def load_data(file_path: pathlib.Path) -> dict:
