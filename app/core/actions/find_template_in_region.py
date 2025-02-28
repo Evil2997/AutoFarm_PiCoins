@@ -4,14 +4,14 @@ import cv2
 import numpy as np
 from PIL import ImageGrab
 
-from app.core.constants import IMAGE_PATHS
+from app.core.constants import IMAGE_PATHS, DEFAULT_REGION, DEFAULT_THRESHOLD
 from app.logs.logger import logger
 
 
 def find_template_in_region(
         name: str,
-        region: tuple[int, int, int, int],
-        threshold: float,
+        region: tuple[int, int, int, int] = DEFAULT_REGION,
+        threshold: float = DEFAULT_THRESHOLD,
 ) -> tuple[int, int] | None:
     template_path = str(IMAGE_PATHS / pathlib.Path(f"{name}.png"))
     (x1, y1, x2, y2) = region

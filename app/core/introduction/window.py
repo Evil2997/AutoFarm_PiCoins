@@ -1,7 +1,7 @@
 import pyautogui as pg
 from ahk import AHK
 
-from app.core.actions.unified_hunt_click import delay
+from app.core.actions.clicker_manager.unified_hunt_click import delay
 from app.logs.logger import logger
 
 ahk = AHK()

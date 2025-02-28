@@ -50,7 +50,20 @@ IMAGE_PATHS: pathlib.Path = MAIN_PROJECT_DIR / pathlib.Path("Images")
 full_screen = ["full_screen"]
 
 PROTON_VPN = ["proton_vpn_open", "continue_without_registration", "vpn_plus__not_now", "proton_vpn_enable", "collapse_all_windows"]
-APP_OPEN_ICON = ["app_open", "button_open_farming", "button_start_farming"]
+
+APP_INSTALL = {
+    "open_play_market": ["open_play_market"],
+    "play_market_first_click": (980, 170),
+    "open_loop_searcher_apps": (150, 530),
+    "write_text_here": (500, 130),
+    "TEXT_TO_WRITE_1": "Pi Network",
+    "install_button": ["install_button"],
+    "TEXT_TO_WRITE_2": "Pi Browser",
+    "collapse_all_windows": ["collapse_all_windows"],
+    "WAIT": 180,
+}
+
+APP_OPEN_ICON = ["app_open_pi_network", "button_open_farming", "button_start_farming"]
 BUTTON_CLOSE_BS_WINDOW = ["button_close_bs_window", "button_close_bs_window__yes"]
 
 SETTINGS_FILE = pathlib.Path("Settings.json")

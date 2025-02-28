@@ -1,4 +1,6 @@
-from app.core.actions.unified_hunt_click import unified_hunt_click
+from app.core.actions.clicker_manager.unified_hunt_click import unified_hunt_click
+from app.core.actions.find_template_in_region import find_template_in_region
+from app.core.app_install import app_install
 from app.core.constants import PROTON_VPN, DEFAULT_THRESHOLD, APP_OPEN_ICON, BUTTON_CLOSE_BS_WINDOW, full_screen
 from app.core.introduction.window import activate_bs_window
 from app.core.managers.delay import delay
@@ -23,7 +25,8 @@ def full_cycle_in_window(
     unified_hunt_click(PROTON_VPN, timeout=5, threshold=DEFAULT_THRESHOLD)
     delay(2, 3)
 
-    # автоматически ищем окно приложения, если его нет - скачиваем и регистрируемся.
+    if not find_template_in_region(name=APP_OPEN_ICON[0], threshold=DEFAULT_THRESHOLD):
+        app_install()
 
     logger.info("Открытие целевого приложения...")
     unified_hunt_click(APP_OPEN_ICON, timeout=5, threshold=DEFAULT_THRESHOLD)
