@@ -60,7 +60,18 @@ APP_INSTALL = {
     "install_button": ["install_button"],
     "TEXT_TO_WRITE_2": "Pi Browser",
     "collapse_all_windows": ["collapse_all_windows"],
-    "WAIT": 180,
+    "WAIT": 90,
+}
+
+FIRST_OPEN_APP = {
+    "app_open": ["app_open_pi_network"],
+    "continue_with_phone_number": ["continue_with_phone_number"],
+    "click_to_write_text_1": (760, 550),
+    "write_here_country_phone_number": "+380",
+    "select_Ukraine": (840, 600),
+    "click_to_write_text_2": (760, 640),
+    "phone_number": "",
+    "button_send": ["button_send"],
 }
 
 APP_OPEN_ICON = ["app_open_pi_network", "button_open_farming", "button_start_farming"]
