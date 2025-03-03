@@ -13,7 +13,7 @@ def find_template_in_region(
         region: tuple[int, int, int, int] = DEFAULT_REGION,
         threshold: float = DEFAULT_THRESHOLD,
 ) -> tuple[int, int] | None:
-    template_path = str(IMAGE_PATHS / pathlib.Path(f"{name}.png"))
+    template_path = str(IMAGE_PATHS / f"{name}.png")
     (x1, y1, x2, y2) = region
     screenshot = np.array(ImageGrab.grab(bbox=(x1, y1, x2, y2)))
     screenshot_gray = cv2.cvtColor(screenshot, cv2.COLOR_BGR2GRAY)
@@ -23,6 +23,7 @@ def find_template_in_region(
         raise FileNotFoundError(f"Template image not found: {template_path}")
     result = cv2.matchTemplate(screenshot_gray, template, cv2.TM_CCOEFF_NORMED)
     _, max_val, _, max_loc = cv2.minMaxLoc(result)
+    print(max_val)
     if max_val >= threshold:
         top_left = (max_loc[0] + x1, max_loc[1] + y1)
         logger.info(f"Found template '{name}' (confidence: {max_val}) at {top_left}")
