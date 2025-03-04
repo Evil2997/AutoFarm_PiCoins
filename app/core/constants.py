@@ -14,7 +14,7 @@ ONE_DAY = 24 * 3600 - 34
 
 WIN_START = {
     "win0": {"cords": (540, 200)},
-    "win1": {"cords": (540, 250)},
+    # "win1": {"cords": (540, 250)},
     # "win2": {"cords": (540, 310)},
     # "win3": {"cords": (540, 360)},
     # "win4": {"cords": (540, 420)},
@@ -60,4 +60,4 @@ app_open_pi_network = "app_open_pi_network"
 button_open_farming = "button_open_farming"
 button_start_farming = "button_start_farming"
 
-
+button_open_farming_by_cords = (1170, 350)

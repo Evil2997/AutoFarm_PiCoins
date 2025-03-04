@@ -1,8 +1,10 @@
+import pyautogui as pg
+
 from app.core.actions.clicker_manager.unified_hunt_click import unified_hunt_click
 from app.core.actions.find_template_in_region import find_template_in_region
 from app.core.app_install import app_install
 from app.core.constants import PROTON_VPN, DEFAULT_THRESHOLD, BUTTON_CLOSE_BS_WINDOW, SETTINGS_FILE, \
-    app_open_pi_network, button_open_farming, button_start_farming, full_screen
+    app_open_pi_network, button_open_farming, button_start_farming, full_screen, button_open_farming_by_cords
 from app.core.first_open_app import first_open_app
 from app.core.introduction.window import activate_bs_window
 from app.core.managers.delay import delay
@@ -40,7 +42,8 @@ def full_cycle_in_window(
     delay(10, 15)
 
     logger.info("Запускаю цикл фарма...")
-    unified_hunt_click(name=button_open_farming, timeout=5, threshold=DEFAULT_THRESHOLD)
+    if not unified_hunt_click(name=button_open_farming, timeout=5, threshold=DEFAULT_THRESHOLD):
+        pg.click(button_open_farming_by_cords)
     delay(2, 3)
     unified_hunt_click(name=button_start_farming, timeout=5, threshold=DEFAULT_THRESHOLD)
     delay(2, 3)

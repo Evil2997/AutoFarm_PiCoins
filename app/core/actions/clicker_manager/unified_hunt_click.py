@@ -14,7 +14,7 @@ def unified_hunt_click(
         timeout: float | None = 10,
         region: tuple[int, int, int, int] = DEFAULT_REGION,
         threshold: float = DEFAULT_THRESHOLD,
-) -> None:
+) -> bool:
         start_time = time.time()
         while not attempt_click(
                 name=name,
@@ -26,3 +26,6 @@ def unified_hunt_click(
                 logger.info("Timeout reached in hunt mode.")
                 break
             delay(0.2, 0.5)
+        else:
+            return True
+        return False
