@@ -3,8 +3,10 @@ import pyautogui as pg
 from app.core.actions.clicker_manager.unified_hunt_click import unified_hunt_click
 from app.core.actions.find_template_in_region import find_template_in_region
 from app.core.app_install import app_install
+from app.core.checker.check_consent_on_screen import check_consent_on_screen
 from app.core.constants import PROTON_VPN, DEFAULT_THRESHOLD, BUTTON_CLOSE_BS_WINDOW, SETTINGS_FILE, \
-    app_open_pi_network, button_open_farming, button_start_farming, full_screen, button_open_farming_by_cords
+    app_open_pi_network, button_open_farming, button_start_farming, full_screen, button_open_farming_by_cords, \
+    TICK_THE_BOX_VERIFICATION
 from app.core.first_open_app import first_open_app
 from app.core.introduction.window import activate_bs_window
 from app.core.managers.delay import delay
@@ -39,14 +41,31 @@ def full_cycle_in_window(
 
     logger.info("Открытие целевого приложения...")
     unified_hunt_click(name=app_open_pi_network, timeout=5, threshold=DEFAULT_THRESHOLD)
-    delay(10, 15)
+    delay(40, 45)
 
     logger.info("Запускаю цикл фарма...")
     if not unified_hunt_click(name=button_open_farming, timeout=5, threshold=DEFAULT_THRESHOLD):
         pg.click(button_open_farming_by_cords)
-    delay(2, 3)
+    delay(4, 5)
     unified_hunt_click(name=button_start_farming, timeout=5, threshold=DEFAULT_THRESHOLD)
     delay(2, 3)
+
+    if check_consent_on_screen():
+        for _ in range(2):
+            unified_hunt_click(name=TICK_THE_BOX_VERIFICATION["tick_the_box"], timeout=20, threshold=DEFAULT_THRESHOLD)
+            delay(4, 5)
+        unified_hunt_click(name=TICK_THE_BOX_VERIFICATION["button_send"], timeout=20, threshold=DEFAULT_THRESHOLD)
+        delay(4, 5)
+        pg.click(935, 350)
+        delay(4, 5)
+
+    logger.info("Запускаю цикл фарма...")
+    if not unified_hunt_click(name=button_open_farming, timeout=5, threshold=DEFAULT_THRESHOLD):
+        pg.click(button_open_farming_by_cords)
+    delay(4, 5)
+    unified_hunt_click(name=button_start_farming, timeout=5, threshold=DEFAULT_THRESHOLD)
+    delay(2, 3)
+
 
     logger.info("Закрытие текущего окна BlueStacks...")
     for name in BUTTON_CLOSE_BS_WINDOW:

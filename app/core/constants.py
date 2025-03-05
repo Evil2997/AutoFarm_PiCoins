@@ -5,7 +5,8 @@ MAIN_PROJECT_DIR: Final[pathlib.Path] = pathlib.Path(__file__).parents[1]
 
 IMAGE_PATHS: pathlib.Path = MAIN_PROJECT_DIR / pathlib.Path("Images")
 SETTINGS_FILE = pathlib.Path = MAIN_PROJECT_DIR / pathlib.Path("Settings.json")
-
+tesseract_config = pathlib.Path = MAIN_PROJECT_DIR / "tesseract_config.json"
+disk_paths = ['C:\\', 'D:\\', 'E:\\']
 
 # ======================================================================================================================
 DEFAULT_REGION = (0, 0, 1920, 1080)
@@ -22,7 +23,6 @@ WIN_START = {
 }
 
 ALL_BS_WINDOWS = len(WIN_START)
-
 
 default_timestamp_HUMAN = "2002-10-29 10:00:00"
 time_key = f"time_start"
@@ -61,3 +61,9 @@ button_open_farming = "button_open_farming"
 button_start_farming = "button_start_farming"
 
 button_open_farming_by_cords = (1170, 350)
+
+TICK_THE_BOX_VERIFICATION = {
+    "tick_the_box": "tick_the_box",
+    "button_send": "button_send_2",
+
+}

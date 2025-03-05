@@ -1,13 +1,13 @@
 import json
 import os
+import pathlib
 
 import pytesseract.pytesseract
 
+from app.core.constants import tesseract_config, disk_paths
 
-def setup_tesseract(search_paths=['C:\\'], config_file_name='tesseract_config.json'):
-    # search_paths = ['C:\\', 'D:\\', 'E:\\']
 
-    # Функция для загрузки сохраненного пути
+def setup_tesseract(search_paths=disk_paths, config_file_name: pathlib.Path = tesseract_config):
     def load_tesseract_path():
         if os.path.exists(config_file_name):
             with open(config_file_name, 'r') as file:
@@ -17,18 +17,15 @@ def setup_tesseract(search_paths=['C:\\'], config_file_name='tesseract_config.js
                     return tesseract_path
         return None
 
-    # Функция для сохранения пути
     def save_tesseract_path(tesseract_path):
         with open(config_file_name, 'w') as file:
             json.dump({'tesseract_path': tesseract_path}, file, indent=2)
 
-    # Сначала проверяем сохраненный путь
     tesseract_path = load_tesseract_path()
     if tesseract_path:
         pytesseract.pytesseract.tesseract_cmd = tesseract_path
         return tesseract_path
 
-    # Ищем tesseract.exe на указанных дисках
     for path in search_paths:
         try:
             for root, dirs, files in os.walk(path):
