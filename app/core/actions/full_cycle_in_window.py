@@ -12,6 +12,7 @@ from app.core.introduction.window import activate_bs_window
 from app.core.managers.delay import delay
 from app.core.managers.time_checker import timer_update
 from app.logs.logger import logger
+from app.main.run_farm_app import run_farm_app
 
 
 def full_cycle_in_window(
@@ -43,12 +44,7 @@ def full_cycle_in_window(
     unified_hunt_click(name=app_open_pi_network, timeout=5, threshold=DEFAULT_THRESHOLD)
     delay(40, 45)
 
-    logger.info("Запускаю цикл фарма...")
-    if not unified_hunt_click(name=button_open_farming, timeout=5, threshold=DEFAULT_THRESHOLD):
-        pg.click(button_open_farming_by_cords)
-    delay(4, 5)
-    unified_hunt_click(name=button_start_farming, timeout=5, threshold=DEFAULT_THRESHOLD)
-    delay(2, 3)
+    RUN_FARM_APP = run_farm_app()
 
     if check_consent_on_screen():
         for _ in range(2):
@@ -59,13 +55,8 @@ def full_cycle_in_window(
         pg.click(935, 350)
         delay(4, 5)
 
-    logger.info("Запускаю цикл фарма...")
-    if not unified_hunt_click(name=button_open_farming, timeout=5, threshold=DEFAULT_THRESHOLD):
-        pg.click(button_open_farming_by_cords)
-    delay(4, 5)
-    unified_hunt_click(name=button_start_farming, timeout=5, threshold=DEFAULT_THRESHOLD)
-    delay(2, 3)
-
+    if not RUN_FARM_APP:
+        run_farm_app()
 
     logger.info("Закрытие текущего окна BlueStacks...")
     for name in BUTTON_CLOSE_BS_WINDOW:

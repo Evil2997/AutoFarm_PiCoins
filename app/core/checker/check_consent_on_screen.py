@@ -1,5 +1,9 @@
+import pyautogui as pg
+from pytesseract import pytesseract
+
+
 def check_consent_on_screen() -> bool:
-    screenshot = pyautogui.screenshot()
+    screenshot = pg.screenshot()
     recognized_text = pytesseract.image_to_string(screenshot, lang='eng')
     required_phrases = [
         "I consent to allow Pi Network to collect and process certain personal information",
