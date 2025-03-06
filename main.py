@@ -12,7 +12,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         pass
     except Exception as e:
-        logger.info(f" {e}")
+        logger.info(f"Работа приложения была прервана из за ошибки:\n {e}")
 
     end_time = time.time()
     print_end_time = format_elapsed_time(end_time, start_time)
