@@ -10,7 +10,6 @@ ahk = AHK()
 def find_manager_window():
     for w in ahk.list_windows():
         if w.title.startswith("BlueStacks Multi Instance Manager"):
-            logger.info("Найдено окно BlueStacks Multi Instance Manager.")
             move_window(w)
             return w
     logger.error("Окно BlueStacks Multi Instance Manager не найдено.")
@@ -22,12 +21,10 @@ def activate_manager_window(attempts=8):
     for _ in range(attempts):
         manager_win.activate()
         delay(0.02, 0.05)
-    logger.info("Окно Manager активировано.")
 
 
 def move_window(window, x=0, y=0):
     window.move(x, y)
-    logger.info(f"Окно Manager перемещено в позицию ({x}, {y}).")
 
 
 def activate_bs_window(
@@ -46,7 +43,6 @@ def activate_bs_window(
             if win.title.startswith(BS_WINDOW_NAME):
                 win.activate()
                 BS_WINDOW_FOUND = True
-                logger.info("Основное окно BlueStacks активировано.")
                 break
         if BS_WINDOW_FOUND:
             break

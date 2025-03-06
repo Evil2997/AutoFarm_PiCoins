@@ -19,7 +19,6 @@ def full_cycle_in_window(
         BS_WINDOW_NUMERIC,
         BS_WINDOW_CORDS,
 ):
-    logger.info("Активация окна BlueStacks...")
     activate_bs_window(
         BS_WINDOW_NUMERIC=BS_WINDOW_NUMERIC,
         BS_WINDOW_CORDS=BS_WINDOW_CORDS,
@@ -29,7 +28,6 @@ def full_cycle_in_window(
     unified_hunt_click(full_screen, timeout=30, threshold=DEFAULT_THRESHOLD)
     delay(2, 3)
 
-    logger.info("Инициализация и запуск VPN клиента ProtonVPN...")
     for name in PROTON_VPN:
         unified_hunt_click(name=name, timeout=5, threshold=DEFAULT_THRESHOLD)
         delay(2, 3)
@@ -40,7 +38,6 @@ def full_cycle_in_window(
         # Передаем конкретные данные для регистрации
         raise SystemExit
 
-    logger.info("Открытие целевого приложения...")
     unified_hunt_click(name=app_open_pi_network, timeout=5, threshold=DEFAULT_THRESHOLD)
     delay(40, 45)
 
@@ -58,7 +55,6 @@ def full_cycle_in_window(
     if not RUN_FARM_APP:
         run_farm_app()
 
-    logger.info("Закрытие текущего окна BlueStacks...")
     for name in BUTTON_CLOSE_BS_WINDOW:
         unified_hunt_click(name=name, timeout=15, threshold=0.85)
         delay(2, 3)
@@ -67,3 +63,4 @@ def full_cycle_in_window(
         path_to_settings_file=SETTINGS_FILE,
         window_numeric=BS_WINDOW_NUMERIC,
     )
+    logger.info(f"Был завершен полный цикл для BlueStacks {BS_WINDOW_NUMERIC}")

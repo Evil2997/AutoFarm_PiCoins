@@ -12,7 +12,6 @@ from app.logs.logger import logger
 
 
 def run_farm_app() -> bool:
-    logger.info("Запускаю цикл фарма...")
     if not unified_hunt_click(name=button_open_farming, timeout=15, threshold=DEFAULT_THRESHOLD):
         pg.click(button_open_farming_by_cords)
     delay(4, 5)

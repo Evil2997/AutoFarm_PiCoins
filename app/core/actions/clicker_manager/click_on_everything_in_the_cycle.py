@@ -19,5 +19,4 @@ def click_on_everything_in_the_cycle(
                 threshold=threshold,
         ):
             return True
-    logger.info("No template found in once mode.")
     raise NotFoundError

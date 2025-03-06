@@ -23,7 +23,6 @@ def unified_hunt_click(
         ):
             delay(0.2, 0.5)
             if timeout is not None and (time.time() - start_time > timeout):
-                logger.info("Timeout reached in hunt mode.")
                 break
             delay(0.2, 0.5)
         else:

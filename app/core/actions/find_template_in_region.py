@@ -25,6 +25,5 @@ def find_template_in_region(
     _, max_val, _, max_loc = cv2.minMaxLoc(result)
     if max_val >= threshold:
         top_left = (max_loc[0] + x1, max_loc[1] + y1)
-        logger.info(f"Found template '{name}' (confidence: {max_val}) at {top_left}")
         return top_left
     return None

@@ -22,6 +22,5 @@ def attempt_click(
         w, h = get_image_size(image_path)
         delay(0.2, 0.5)
         pg.click(pos[0] + w / 2, pos[1] + h / 2)
-        logger.info(f"Clicked on '{name}' at {pos}")
         return True
     return False
