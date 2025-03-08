@@ -1,22 +1,22 @@
 import json
 from datetime import datetime, timedelta
 
-from app.core.constants import ONE_DAY, SETTINGS_FILE, ALL_BS_WINDOWS
+from app.core.constants import SETTINGS_FILE, ALL_BS_WINDOWS, ONE_DAY
 
 
 def time_until_next_launch(
         file_path: str = SETTINGS_FILE,
         num_windows: int = ALL_BS_WINDOWS,
         interval_seconds: int = ONE_DAY,
-) -> float:
+) -> int:
     with open(file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
+    # Сортировка окон по порядковому номеру (win0, win1, ...)
     windows = sorted(
         ((key, value) for key, value in data.items() if key.startswith("win")),
         key=lambda x: int(x[0].replace("win", ""))
     )
-
     windows = windows[:num_windows]
 
     now = datetime.now()
@@ -35,6 +35,6 @@ def time_until_next_launch(
         next_launch_times.append(max(0, diff_seconds))
 
     if not next_launch_times:
-        return 0.0
+        return 0
 
     return int(min(next_launch_times))

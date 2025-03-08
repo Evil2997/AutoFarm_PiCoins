@@ -11,7 +11,7 @@ disk_paths = ['C:\\', 'D:\\', 'E:\\']
 # ======================================================================================================================
 DEFAULT_REGION = (0, 0, 1920, 1080)
 DEFAULT_THRESHOLD = 0.92
-ONE_DAY = 24 * 3600 - 34
+ONE_DAY = 24 * 3600 - 60
 
 WIN_START = {
     "win0": {"cords": (540, 200)},
@@ -31,7 +31,7 @@ full_screen = "full_screen"
 
 PROTON_VPN = ["proton_vpn_open", "continue_without_registration", "vpn_plus__not_now", "proton_vpn_enable",
               "collapse_all_windows"]
-BUTTON_CLOSE_BS_WINDOW = ["button_close_bs_window", "button_close_bs_window__yes"]
+BUTTON_CLOSE_BS_WINDOW = ["button_close_bs_window", "button_close_bs_window__yes_1", "button_close_bs_window__yes_2"]
 
 APP_INSTALL = {
     "open_play_market": "open_play_market",
