@@ -48,16 +48,20 @@ def full_cycle_in_window(
             unified_hunt_click(name=TICK_THE_BOX_VERIFICATION["tick_the_box"], timeout=20, threshold=DEFAULT_THRESHOLD)
             delay(4, 5)
         unified_hunt_click(name=TICK_THE_BOX_VERIFICATION["button_send"], timeout=20, threshold=DEFAULT_THRESHOLD)
-        delay(4, 5)
+        delay(14, 15)
         pg.click(935, 350)
-        delay(4, 5)
+        delay(14, 15)
 
     if not RUN_FARM_APP:
         run_farm_app()
 
     for name in BUTTON_CLOSE_BS_WINDOW:
-        unified_hunt_click(name=name, timeout=3, threshold=0.86)
-        delay(2, 3)
+        if name == BUTTON_CLOSE_BS_WINDOW[0]:
+            threshold = DEFAULT_THRESHOLD
+        else:
+            threshold = 0.82
+        unified_hunt_click(name=name, timeout=15, threshold=threshold)
+        delay(4, 5)
 
     timer_update(
         path_to_settings_file=SETTINGS_FILE,

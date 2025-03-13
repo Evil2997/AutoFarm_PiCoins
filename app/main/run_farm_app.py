@@ -14,9 +14,9 @@ from app.logs.logger import logger
 def run_farm_app() -> bool:
     if not unified_hunt_click(name=button_open_farming, timeout=15, threshold=DEFAULT_THRESHOLD):
         pg.click(button_open_farming_by_cords)
-    delay(4, 5)
+    delay(14, 15)
     if unified_hunt_click(name=button_start_farming, timeout=15, threshold=DEFAULT_THRESHOLD):
-        delay(2, 3)
+        delay(12, 13)
         return True
-    delay(2, 3)
+    delay(12, 13)
     return False

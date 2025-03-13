@@ -30,12 +30,13 @@ def move_window(window, x=0, y=0):
 def activate_bs_window(
         BS_WINDOW_NUMERIC: int,
         BS_WINDOW_CORDS: tuple[int, int],
-        attempts: int = 3,
+        attempts: int = 8,
 ):
     BS_WINDOW_FOUND = False
     BS_WINDOW_NAME = f"BlueStacks {BS_WINDOW_NUMERIC}"
 
     activate_manager_window()
+    delay(2, 3)
     pg.click(BS_WINDOW_CORDS)
     delay(20, 30)
     for _ in range(attempts):
@@ -48,6 +49,6 @@ def activate_bs_window(
             break
 
     if not BS_WINDOW_FOUND:
-        logger.error("Основное окно BlueStacks не найдено в activate_main_window.")
+        logger.error(f"Основное окно BlueStacks {BS_WINDOW_NUMERIC} не найдено в activate_main_window.")
         raise Exception("Основное окно BlueStacks не найдено")
     delay()

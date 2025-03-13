@@ -17,7 +17,7 @@ def run_app():
             interval_seconds=ONE_DAY
         )
 
-        time.sleep(seconds_until_next_launch)
+        time.sleep(seconds_until_next_launch + 1)
 
         for i in range(ALL_BS_WINDOWS):
             BS_WINDOW_NUMERIC = i

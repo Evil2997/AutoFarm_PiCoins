@@ -31,7 +31,7 @@ full_screen = "full_screen"
 
 PROTON_VPN = ["proton_vpn_open", "continue_without_registration", "vpn_plus__not_now", "proton_vpn_enable",
               "collapse_all_windows"]
-BUTTON_CLOSE_BS_WINDOW = ["button_close_bs_window", "button_close_bs_window__yes_1", "button_close_bs_window__yes_2"]
+BUTTON_CLOSE_BS_WINDOW = ["button_close_bs_window", "button_close_bs_window__yes_1", "button_close_bs_window__yes_2", "button_close_bs_window__yes_3"]
 
 APP_INSTALL = {
     "open_play_market": "open_play_market",

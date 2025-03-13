@@ -27,7 +27,6 @@ def time_until_next_launch(
         try:
             last_launch = datetime.strptime(time_start_str, "%Y-%m-%d %H:%M:%S")
         except Exception as e:
-            print(f"Ошибка разбора времени для {key}: {time_start_str}")
             continue
 
         next_launch = last_launch + timedelta(seconds=interval_seconds)
